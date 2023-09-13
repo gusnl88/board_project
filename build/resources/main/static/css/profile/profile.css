@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Signika+Negative:300,400&display=swap");
+.box { margin-top: 1000px; color: white; text-align: center; opacity: 0; /*transform: rotate(-360deg);*/ transition:all 2s; }
+div.box h1 { font-size: 2vh; }
+html { /*background-size: cover; !* 이미지를 화면에 꽉 차도록 크기 조정 *!*/ background-color: #000; font-family: "Signika Negative", sans-serif; height: 100%; overflow-x: hidden; }
+body { margin: 0; padding: 0; height: 100%; }
+.cover { width: 100vw; display: flex; }
+.cover:nth-child(1) { transform: rotate(-2deg); color: white; }
+.cover:nth-child(2) { transform: rotate(2deg); color: white; justify-content: flex-end; }
+p { display: flex; padding: 3rem 0; font-size: 5rem; }
+li { color: #c3c3c3; font-weight: bold; font-size: 2vh; }
+ul { list-style: none; }
+.navigate { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; padding: 10px 0; text-align: start; border: 1px solid red; }
+.home { width: 100px; padding-left: 20px; position: fixed; font-size: 2vh; }
+.home a { color: white; }

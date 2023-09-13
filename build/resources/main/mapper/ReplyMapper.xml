@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.board_project.mapper.ReplyMapper">
+    <resultMap id="replyMap" type="ReplyDto">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="content" property="content"/>
+        <result column="created_at" property="createdAt"/>
+
+    </resultMap>
+    <insert id="insertOne">
+        INSERT INTO comments (name,content) values (#{name},#{content})
+    </insert>
+    <select id="findAll" resultType="com.project.board_project.DTO.ReplyDto" parameterType="ReplyPageDto">
+        SELECT * FROM comments
+    </select>
+</mapper>

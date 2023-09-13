@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Signika+Negative:300,400&display=swap");
+* { margin: 0; padding: 0; }
+html{ scroll-behavior: smooth; }
+body { font-family: "Signika Negative", sans-serif; letter-spacing: 0.04em; }
+.section { height: 100vh; width: 100%; position: relative; display: flex; justify-content: center; align-items: center; }
+.bg1 { background-color: #ccc; }
+.bg2 { background-color: #333; }
+h1 { font-size: 40px; line-height: 1.2; margin: 0; }
+.spacer { height: 50vh; background-color: #000; position: relative; display: flex; justify-content: center; align-items: center; color: white; }
+.navigater { width: 100%; display: flex; justify-content: space-between; background-color: gray; position: fixed; z-index: 1; }
+a { text-decoration: none; color: white; }
+a:hover { color: orange; }
+ul { display: flex; }
+li { list-style: none; margin: 20px 50px; padding-top: 10px; }
+.logo{ margin:10px 50px; cursor: pointer; }
+.logo span { position: relative; display: inline-block; font-size: 40px; color: #fff; text-transform: uppercase; animation: flip 2s infinite; animation-delay: calc(.2s * var(--i)) }
+
+.note {margin-top:100px;width:90%;height:85%;background:white;}
+.no-style{}
+@keyframes flip { 0%, 80% { transform: rotateY(360deg) } }
+.icons { display: none; }
+/* 여기까지 navbar */
+/* 여기까지 main */
+/* 여기까지 footer */
+@media screen and (max-width:1100px) { html{ scroll-behavior: smooth; }
+.logo { position: relative; margin-left: 10px; margin-top: 10px; }
+.logo span{ font-size: 20px; }
+.menu li { position: relative; margin: 20px; }
+.menu { position: relative; justify-content: center; display: none; }
+.icons li { margin: 0; font-size: 20px; }
+.menu.active { margin-top: -15px; margin-bottom: -10px; font-size: 15px; display: flex; }
+.logo.active { display: none; }
+.icons { margin-right: 30px; display: block; }
+/* 여기까지 navbar */ }
+/* 여기까지 main */
+h1{ color: black; }
