@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-            if (content.length > 150) {
+            if (content.length > 20) {
             alert("내용은 150자 이내로 등록 가능합니다.");
             return;
             }

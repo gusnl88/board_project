@@ -23,6 +23,9 @@
 <body oncontextmenu="return false" onselectstart="return false">
 
 <div class="bar1"></div>
+<div th:if="${msg}" class="alert alert-info" role="alert">
+  <p th:text="${msg}"></p>
+</div>
 <nav class="navigater">
   <a href="/index.html">
   <div  class="logo" >
@@ -87,10 +90,10 @@
     </nav>
     <div class="input-group mb-3">
       <div class="col-md-3">
-        <input type="text" class="form-control" id="nameInput" name="name" placeholder="이름을 입력하세요(한글10자 이내)">
+        <input type="text" class="form-control" id="nameInput" name="name" placeholder="이름 입력(한글10자 이내)">
       </div>
       <div class="col-md-8">
-        <input type="text" class="form-control" id="contentInput" name="content" placeholder="글은 150자 이내로만 작성 가능합니다.">
+        <input type="text" class="form-control" id="contentInput" name="content" placeholder="글은 20자 이내로만 작성.">
       </div>
       <div class="col-md-1">
         <button class="btn btn-primary" id="commentButton" style="z-index:0;">댓글 등록</button>
