@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    input{
+    display:block;}
+</style>
+</head>
+<body>
+    <h2>회원가입</h2>
+    <form method="post" action="/user/signup">
+        <div>
+        <input type="text" id="uIdInput" name="uId" placeholder="아이디"><span id="uIdCheck"></span>
+        <input type="text" name="pw" id="pwInput" placeholder="비밀번호">
+        <input type="text" id="pwOutput" placeholder="비밀번호"><span id="pwCheck"></span>
+        <input type="text" name="name" placeholder="이름">
+
+        </div>
+        <button>가입</button>
+    </form>
+</body>
+<script>
+    const uIdInput = document.querySelector('#uIdInput');
+    const pwInput = document.querySelector('#pwInput');
+    const pwOutput = document.querySelector('#pwOutput');
+    const uIdCheck = document.querySelector('#uIdCheck');
+    const pwCheck = document.querySelector('#pwCheck');
+
+    uIdInput.addEventListener("change", async function () {
+    const uId = uIdInput.value;
+    const response = await fetch(`/user/${uId}/checkId.do`);
+    const result = await response.json();
+    const isKorean = /[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(uId);
+
+        if(isKorean){
+            alert("한글은 사용할수 없습니다");
+        }else{
+            if (result > 0) {
+                uIdCheck.textContent='이미사용중인 아이디입니다';
+                uIdCheck.style.color='red';
+            } else {
+                uIdCheck.textContent='사용 가능한 아이디입니다.';
+                uIdCheck.style.color='green';
+            }
+        }
+
+    });
+
+    pwInput.addEventListener("change", function () {
+        const pw = pwInput.value;
+
+        // 비밀번호가 10자리 이상이고, 특수문자가 한 개 이상 들어가야 함
+        const isPasswordValid = pw.length >= 10 && /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(pw);
+
+        if (isPasswordValid) {
+            alert("사용가능한 비밀번호 입니다.");
+        } else {
+            alert("비밀번호는 10자리이상 특수문자1개이상 입력하셔야 합니다.");
+        }
+    });
+
+    pwOutput.addEventListener("change", function () {
+        const inputPw = pwInput.value;
+        const outputPw = pwOutput.value;
+        if (inputPw === outputPw) {
+            pwCheck.textContent='비밀번호가 동일합니다.';
+            pwCheck.style.color='green';
+        } else {
+            pwCheck.textContent='비밀번호가 다릅니다. 다시 입력하세요.';
+            pwCheck.style.color='red';
+        }
+    });
+</script>
+</html>
