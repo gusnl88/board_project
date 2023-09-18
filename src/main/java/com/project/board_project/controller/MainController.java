@@ -27,7 +27,7 @@ public class MainController {
         PageInfo<ReplyDto> page=new PageInfo<>(reply);
         model.addAttribute("reply",reply);
         model.addAttribute("page",page);
-        return "/main/main";
+        return "main";
     }
 
     @Data
