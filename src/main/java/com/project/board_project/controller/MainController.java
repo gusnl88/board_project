@@ -6,6 +6,7 @@ import com.project.board_project.DTO.ReplyPageDto;
 import com.project.board_project.service.ReplayService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,19 +40,24 @@ public class MainController {
 
     @PostMapping("/reply")
     @ResponseBody
-    public String replyRegister(@RequestBody CommentRequest commentRequest) {
-        System.out.println("성공");
+    public ResponseEntity<String> replyRegister(@RequestBody CommentRequest commentRequest) {
         String name = commentRequest.getName();
         String content = commentRequest.getContent();
 
         if (name != null && content != null) {
-            // 댓글 등록 로직을 수행하고 성공 여부를 확인하는 코드를 작성합니다.
-            replayService.register(name, content);
+            try {
+                // 댓글 등록 로직을 수행합니다.
+                replayService.register(name, content);
 
-            // 댓글 등록 성공 시 200 OK 응답을 반환합니다.
-            return "redirect:/main/main";
+                // 댓글 등록 성공 시 200 OK 응답을 반환합니다.
+                return ResponseEntity.ok("댓글이 성공적으로 등록되었습니다.");
+            } catch (Exception e) {
+                // 댓글 등록 중 오류가 발생한 경우 500 Internal Server Error 응답을 반환합니다.
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("댓글 등록 중 오류가 발생했습니다.");
+            }
         } else {
-           return "/main/main";
+            // 요청 데이터가 유효하지 않은 경우 400 Bad Request 응답을 반환합니다.
+            return ResponseEntity.badRequest().body("이름과 내용을 모두 입력하세요.");
         }
     }
 }
