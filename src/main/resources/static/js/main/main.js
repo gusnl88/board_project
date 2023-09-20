@@ -27,8 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
          const content = contentInput.value;
          const name= nameInput.value;
             // 한글 문자만 포함되어 있는지 확인하는 정규 표현식
-          const isAllowed = /^[가-힣\s!@#$%^&*(),.?":{}|<>]+$/.test(name);
-
+         const isAllowed = /^[가-힣\s!@#$%^&*(),.?":{}|<>0-9]+$/.test(name);
           if (!isAllowed || name.length > 10) {
               alert("이름은 한글, 특수 문자, 띄어쓰기를 포함하여 10자 이내로 가능합니다.");
               nameInput.value = ""; // 입력 내용 지우기
