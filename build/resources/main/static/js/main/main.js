@@ -27,13 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
          const content = contentInput.value;
          const name= nameInput.value;
             // 한글 문자만 포함되어 있는지 확인하는 정규 표현식
-                const isKorean = /^[가-힣]+$/.test(name);
-
-            if (!isKorean || name.length > 10) {
-                alert("이름은 한글(10자이내) 이름만 가능합니다.");
-                nameInput.value = ""; // 입력 내용 지우기
-                return;
-            }
+         const isAllowed = /^[가-힣\s!@#$%^&*(),.?":{}|<>0-9]+$/.test(name);
+          if (!isAllowed || name.length > 10) {
+              alert("이름은 한글, 특수 문자, 띄어쓰기를 포함하여 10자 이내로 가능합니다.");
+              nameInput.value = ""; // 입력 내용 지우기
+              return;
+          }
 
             if (content.length > 20) {
                 alert("내용은 20자 이내로 등록 가능합니다.");
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
                  const responseData = await response.text(); // JSON 대신 text로 응답을 받음
                   if (responseData === "success") {
                         location.reload(); //등록후 새로고침
-                        alert("글이 성공적으로 등록되었습니다.\n 글은 3번만 등록 가능합니다.");
+                        alert("글이 성공적으로 등록되었습니다.\n글은 3번만 등록 가능합니다.");
                   } else if (responseData === "exceeded") {
                         location.reload(); //등록후 새로고침
                         alert("글등록 횟수를 초과하였습니다.");
@@ -57,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
       } catch (error) {
-        console.error("댓글을 업데이트하는 동안 오류가 발생했습니다.", error);
+        console.error("글을 업데이트하는 동안 오류가 발생했습니다.", error);
       }
     } else {
       alert("이름과 내용을 모두 입력하세요.");

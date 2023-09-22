@@ -1,14 +1,13 @@
 package com.project.board_project.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.project.board_project.DTO.ReplyDto;
-import com.project.board_project.DTO.ReplyPageDto;
-import com.project.board_project.service.ReplayService;
+import com.project.board_project.DTO.reply.ReplyDto;
+import com.project.board_project.DTO.reply.ReplyPageDto;
+import com.project.board_project.DTO.user.UserDto;
+import com.project.board_project.service.reply.ReplayService;
 import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +29,10 @@ public class MainController {
             commentCount = 0;
             session.setAttribute("commentCount", commentCount);
         }
+        UserDto loginUser = (UserDto) session.getAttribute("loginUser");
 
+        // 가져온 사용자 정보를 모델에 추가
+        model.addAttribute("loginUser", loginUser);
         // 댓글 작성 횟수를 모델에 추가
         model.addAttribute("commentCount", commentCount);
         List<ReplyDto> reply;
@@ -48,7 +50,11 @@ public class MainController {
 
         // 게터와 세터 메서드 생략 (Lombok 등을 사용하면 코드를 간소화할 수 있음)
     }
-
+    @GetMapping("/{id}/delete")
+    public String deleteAction(@PathVariable int id){
+        int result=replayService.remove(id);
+        return "redirect:/main";
+    }
     @PostMapping("/reply")
     @ResponseBody
     public String replyRegister(@RequestBody CommentRequest commentRequest, HttpSession session) {

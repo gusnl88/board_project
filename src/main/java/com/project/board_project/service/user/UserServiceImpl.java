@@ -1,7 +1,7 @@
-package com.project.board_project.service;
+package com.project.board_project.service.user;
 
-import com.project.board_project.DTO.UserDto;
-import com.project.board_project.mapper.UserMapper;
+import com.project.board_project.DTO.user.UserDto;
+import com.project.board_project.mapper.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +18,7 @@ public class UserServiceImpl implements UserService{
     public UserDto idCheck(String uId) {
         return userMapper.findByUserId(uId);
     }
+
+    @Override
+    public UserDto login(UserDto userDto) {return userMapper.findByUidAndPw(userDto);}
 }

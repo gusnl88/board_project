@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
       } catch (error) {
-        console.error("댓글을 업데이트하는 동안 오류가 발생했습니다.", error);
+        console.error("글을 업데이트하는 동안 오류가 발생했습니다.", error);
       }
     } else {
       alert("이름과 내용을 모두 입력하세요.");

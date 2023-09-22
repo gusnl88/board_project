@@ -1,8 +1,8 @@
-package com.project.board_project.service;
+package com.project.board_project.service.reply;
 import com.github.pagehelper.PageHelper;
-import com.project.board_project.DTO.ReplyDto;
-import com.project.board_project.DTO.ReplyPageDto;
-import com.project.board_project.mapper.ReplyMapper;
+import com.project.board_project.DTO.reply.ReplyDto;
+import com.project.board_project.DTO.reply.ReplyPageDto;
+import com.project.board_project.mapper.reply.ReplyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,11 @@ public class ReplayServiceImpl implements ReplayService{
     @Override
     public int register(String name, String content) {
         return replyMapper.insertOne(name,content);
+    }
+
+    @Override
+    public int remove(int id) {
+        return replyMapper.deleteOne(id);
     }
 
     @Override

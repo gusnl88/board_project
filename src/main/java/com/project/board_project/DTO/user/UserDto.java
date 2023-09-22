@@ -1,4 +1,4 @@
-package com.project.board_project.DTO;
+package com.project.board_project.DTO.user;
 
 import lombok.Data;
 
