@@ -28,7 +28,7 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .menu li { position: relative; margin: 20px; }
 .menu { position: relative; justify-content: center; display: none; }
 .icons li { margin: 0; font-size: 20px; }
-.menu.active { margin-top: -15px; margin-bottom: -10px; font-size: 15px; display: flex; }
+.menu.active {padding:0; margin-top: -15px; margin-bottom: -10px; font-size: 15px; display: flex; }
 .logo.active { display: none; }
 .icons { margin-right: 30px; display: block; }
 /* 여기까지 navbar */ }

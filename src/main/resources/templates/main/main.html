@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <meta name="naver" content="notranslate">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.20.0/font/bootstrap-icons.css" rel="stylesheet">
+
   <link rel="stylesheet" href="/css/main/main.css">
   <script src="/js/main/main.js" defer></script>
   <style>
@@ -54,7 +56,7 @@
     <li><a href="#etc">ETC</a></li>
     <li th:if="${session.loginUser}">
       <span style="color:white" th:text="${session.loginUser.uId}"></span>
-      <a class="btn btn-outline-danger mb-0" href="/user/logout">로그아웃</a>
+      <a href="/user/logout">out</a>
       <!-- 필요한 다른 사용자 정보를 표시할 수 있습니다. -->
     </li>
   </ul>
@@ -112,7 +114,7 @@
             <span class="font-weight-bold" style="font-weight: bold;" th:text="${s.name}"></span>
             <span style="margin-top:10px;" class=""
                   th:text="${#dates.format(s.created_at, 'yyyy-MM-dd HH:mm')}"></span>
-            <a th:if="${session.loginUser}" th:href="@{'/main/{Id}/delete'(Id=${s.id})}">X</a>
+            <span class="btn" th:if="${session.loginUser}" th:href="@{'/main/{Id}/delete'(Id=${s.id})}">X</span>
           </div>
           <p th:text="${s.content}"></p>
         </li>
@@ -130,7 +132,6 @@
 
 <div class="section bg2" id="skills">
   <h1>Animation 2</h1>
-
 </div>
 
 <div class="spacer" id="etc">
