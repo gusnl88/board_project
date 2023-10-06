@@ -30,7 +30,7 @@ public class SignupController {
         log.error(e.getMessage());
         }
 //        redirectAttributes.addAttribute("login",loginUser);
-    return "redirect:/";
+    return "redirect:/main";
     }
     @GetMapping("")
     public String sig(){
@@ -39,7 +39,7 @@ public class SignupController {
     @PostMapping("/signup")
     public String signup(@ModelAttribute UserDto userDto) {
         userService.signup(userDto);
-        return "redirect:/"; // 리다이렉트할 URL
+        return "redirect:/main"; // 리다이렉트할 URL
     }
     @ResponseBody
     @GetMapping("/{uId}/checkId.do")
@@ -55,6 +55,6 @@ public class SignupController {
     @GetMapping("logout")
     public String logout(HttpSession session){
         session.removeAttribute("loginUser");
-        return "redirect:/";
+        return "redirect:/main";
     }
 }
