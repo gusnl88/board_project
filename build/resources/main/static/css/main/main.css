@@ -30,13 +30,16 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .project {width:1200px; height:100%;background-color:white;margin:10px;border-radius: 1rem;padding: 3rem;box-shadow: 1rem 1rem 1rem 0 black;display: flex;;flex-direction: column;align-items: center;}
 .project .title{padding-bottom: 0.5rem;font-weight: 400;font-size: 2.5rem;color: #222;text-align: center;}
 .project .sub_title{margin-bottom: 2rem;font-weight: 400;font-size: 1rem;color: #6c757d;text-align: center;opacity: .8;}
-.project .content {display: flex;align-items: center;justify-content: space-between;}
+.project .content {display: flex;justify-content: space-between;}
 .project .content .image_box{margin-right: 3rem;}
+.project .content .image_box img{display: block;width: 100%;height: auto;}
+
 .project .content .content_box .show{padding-bottom: 1rem;margin-bottom: 1rem;border-bottom: 1px solid #ccc;font-weight: 400;font-size: 1rem;}
-.project .content .content_box .description{margin-bottom: 1rem;}
+.project .content .content_box .description{margin-bottom: -1.5rem;}
 
 .project .content .content_box .description .title{display: inline-block;vertical-align: top;font-weight: 900;font-size: 1rem;}
-.project .content .content_box .description .sub_title{display: inline-block;vertical-align: bottom;width: calc(100% - 8.4rem);font-weight: 400;font-size: 1rem;}
+.project .content .content_box .description .sub_title{ white-space: pre-line; /* 공백 유지 및 줄 바꿈 허용 */
+                                                         word-wrap: break-word;vertical-align: bottom;font-weight: 400;font-size: 1rem;}
 
 .bg2 {display: flex; flex-direction: column;align-items: center;justify-content: center;}
 
@@ -48,6 +51,7 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .project .content {display:block;}
 .project .content .image_box img{display: block;width: 100%;height: auto;}
 .project .content .content_box div:first-child {margin-top:1rem;}
+.project .content .content_box .description .sub_title{display: block;text-align:start;}
 
 
 .logo { position: relative; margin-left: 10px; margin-top: 10px; }
