@@ -52,8 +52,6 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 
 
 @media screen and (max-width:768px) { html{ scroll-behavior: smooth; }
-.section{top:10px;height:100%;}
-
 .project{display:block;width:90%;box-shadow: 0.5rem 0.5rem 0.5rem black;}
 .project .title {font-size:2rem;font-weight:bold;}
 .project .content .image_box {margin-right:0;}
