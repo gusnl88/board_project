@@ -60,7 +60,7 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .project .content .content_box div:first-child {margin-top:1rem;}
 .project .content .content_box .description .sub_title{display: block;text-align:start;}
 
-.skills{display:block;height:auto;margin-bottom: -22px;}
+.skills{display:block;height:auto;margin-bottom: -32px;}
 .skills div{align-items:normal;box-shadow: 0.5rem 0.5rem 0.5rem 0 black;margin: 2rem auto;width:300px}
 .skills h1{position:relative;margin:auto;padding:5px;text-align:center;border-bottom-width: 5px;border-bottom-style: solid;width: 50%;}
 .logo { position: relative; margin-left: 10px; margin-top: 10px; }
