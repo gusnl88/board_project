@@ -51,6 +51,12 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .bg2 {display: flex; flex-direction: column;align-items: center;justify-content: center;}
 
 
+/*이미지 슬라이드 */
+.slider-container{overflow: hidden;position: relative;}
+.slider-container .slider{width: 100%;display: flex;transition: transform 0.5s ease-in-out;}
+.image_box .slider-button{text-align: center;margin: 10px;}
+
+
 @media screen and (max-width:768px) { html{ scroll-behavior: smooth; }
 .project{display:block;width:90%;box-shadow: 0.5rem 0.5rem 0.5rem black;}
 .project .title {font-size:2rem;font-weight:bold;}

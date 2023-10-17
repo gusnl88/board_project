@@ -77,3 +77,56 @@ document.addEventListener("DOMContentLoaded", () => {
     return response;
   }
 });
+
+// 이미지 슬라이드 함수
+
+ document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".slider");
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+    let imageWidth; // 이미지의 너비
+    let position = 0;
+
+    // 함수를 사용하여 이미지 너비 설정
+    function setImageWidth() {
+        if (window.innerWidth < 768) {
+            // 모바일 화면
+            imageWidth = 228;
+        } else {
+            // 데스크톱 화면
+            imageWidth = 622;
+        }
+    }
+
+    // 초기 이미지 너비 설정
+    setImageWidth();
+
+    // 다음 이미지로 이동
+    function nextSlide() {
+        if (position > -(imageWidth * (slider.children.length - 1))) {
+            position -= imageWidth;
+            slider.style.transform = `translateX(${position}px)`;
+        }
+    }
+
+    // 이전 이미지로 이동
+    function prevSlide() {
+        if (position < 0) {
+            position += imageWidth;
+            slider.style.transform = `translateX(${position}px)`;
+        }
+    }
+
+    // 윈도우 크기가 변경될 때 이미지 너비 다시 설정
+    window.addEventListener("resize", setImageWidth);
+
+    // 이전 버튼 클릭 시
+    prevButton.addEventListener("click", function () {
+        prevSlide();
+    });
+
+    // 다음 버튼 클릭 시
+    nextButton.addEventListener("click", function () {
+        nextSlide();
+    });
+});
