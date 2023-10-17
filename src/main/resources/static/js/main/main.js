@@ -84,32 +84,46 @@ document.addEventListener("DOMContentLoaded", () => {
      const slider = document.querySelector(".slider");
      const prevButton = document.getElementById("prev");
      const nextButton = document.getElementById("next");
+     const currentPageElement = document.getElementById("currentPage");
+     const totalPagesElement = document.getElementById("totalPages");
      let imageWidth; // 이미지의 너비
      let position = 0;
+     let currentPage = 1; // 현재 페이지
+     const totalPages = slider.children.length; // 총 페이지 수
 
      // 함수를 사용하여 이미지 너비 설정
      function setImageWidth() {
          if (window.innerWidth < 768) {
              // 모바일 화면
-             imageWidth = 275.4;
+             imageWidth = 274.79;
          } else {
              // 데스크톱 화면
-             imageWidth = 622;
+             imageWidth = 390.58;
          }
      }
 
      // 초기 이미지 너비 설정
      setImageWidth();
 
+     // 현재 페이지와 총 페이지 업데이트
+     function updatePageInfo() {
+         currentPageElement.textContent = currentPage;
+         totalPagesElement.textContent = totalPages;
+     }
+
      // 다음 이미지로 이동
      function nextSlide() {
-         if (position > -(imageWidth * (slider.children.length - 2))) {
+         if (position > -(imageWidth * (totalPages - 2))) {
              position -= imageWidth;
              slider.style.transform = `translateX(${position}px)`;
+             currentPage += 1;
+             updatePageInfo();
          } else {
              // 마지막 요소에서 다음 버튼 클릭 시 첫 번째 요소로 이동
              position = 0;
              slider.style.transform = `translateX(${position}px)`;
+             currentPage = 1;
+             updatePageInfo();
          }
      }
 
@@ -118,10 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
          if (position < 0) {
              position += imageWidth;
              slider.style.transform = `translateX(${position}px)`;
+             currentPage -= 1;
+             updatePageInfo();
          } else {
              // 첫 번째 요소에서 이전 버튼 클릭 시 마지막 요소로 이동
-             position = -(imageWidth * (slider.children.length - 2));
+             position = -(imageWidth * (totalPages - 2));
              slider.style.transform = `translateX(${position}px)`;
+             currentPage = totalPages;
+             updatePageInfo();
          }
      }
 
@@ -137,5 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
      nextButton.addEventListener("click", function () {
          nextSlide();
      });
+
+     // 초기 페이지 정보 업데이트
+     updatePageInfo();
  });
+
 

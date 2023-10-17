@@ -52,10 +52,10 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 
 
 /*이미지 슬라이드 */
-.slider-container{overflow: hidden;position: relative;}
-.slider-container .slider{width: 100%;display: flex;transition: transform 0.5s ease-in-out;}
-.image_box .slider-button{text-align: center;margin: 10px;}
-
+.slider-container{width: 390.58px;overflow: hidden;position: relative;}
+.slider-container .slider{width: 100%;height:500px;display: flex;transition: transform 0.5s ease-in-out;}
+.image_box .slider-button{text-align: center;margin: 30px;}
+.slider-button i:hover {cursor: pointer;}
 
 @media screen and (max-width:768px) { html{ scroll-behavior: smooth; }
 .project{display:block;width:90%;box-shadow: 0.5rem 0.5rem 0.5rem black;}
@@ -66,6 +66,8 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .project .content .content_box div:first-child {margin-top:1rem;}
 .project .content .content_box .description .sub_title{display: block;text-align:start;}
 
+/*이미지 슬라이드*/
+.slider-container{    width: 100%;}
 .skills{display:block;height:auto;padding:10px;}
 .skills div{align-items:normal;box-shadow: 0.5rem 0.5rem 0.5rem 0 black;margin: 2rem auto;width:300px}
 .skills h1{position:relative;margin:auto;padding:5px;text-align:center;border-bottom-width: 5px;border-bottom-style: solid;width: 50%;}
