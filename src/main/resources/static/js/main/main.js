@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function setImageWidth() {
         if (window.innerWidth < 768) {
             // 모바일 화면
-            imageWidth = 228;
+            imageWidth = 275;
         } else {
             // 데스크톱 화면
             imageWidth = 622;
