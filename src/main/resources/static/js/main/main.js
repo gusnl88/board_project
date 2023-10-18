@@ -1,3 +1,4 @@
+// ********************************************************  네브바 메뉴아이콘
 const $toggleBtn = document.querySelector(".toggleBtn");
 const $menu = document.querySelector(".menu");
 const $logo = document.querySelector(".logo")
@@ -7,9 +8,8 @@ $toggleBtn.addEventListener("click", () => {
 $menu.classList.toggle("active");
 $logo.classList.toggle("active");
 })
-// 여기까지 네브바 메뉴아이콘
 
-// comments.js
+// ******************************************************** 댓글 코드
 
 document.addEventListener("DOMContentLoaded", () => {
   const commentButton = document.getElementById("commentButton");
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// 이미지 슬라이드 함수
+// ********************************************************  이미지 슬라이드 함수
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
      function setImageWidth() {
          if (window.innerWidth < 768) {
              // 모바일 화면
-             imageWidth = 274.79;
+             imageWidth = 275.35;
          } else {
              // 데스크톱 화면
              imageWidth = 390.58;
@@ -173,4 +173,26 @@ document.addEventListener("DOMContentLoaded", function () {
      updatePageInfo();
  }
 
+
+// ********************************************************  하단우측 버튼 활성화 코드
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollToTopButton = document.getElementById("scrollToTop");
+
+    // 스크롤 이벤트 감지
+    window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 300) { // 예시로 300px 스크롤하면 버튼 표시
+            scrollToTopButton.style.display = "block";
+        } else {
+            scrollToTopButton.style.display = "none";
+        }
+    });
+
+    // 버튼 클릭 시 페이지 맨 위로 스크롤
+    scrollToTopButton.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
 
