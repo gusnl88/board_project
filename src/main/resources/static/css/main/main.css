@@ -16,7 +16,6 @@ body { font-family: "Signika Negative", sans-serif; letter-spacing: 0.04em; }
 .skills span {margin: 0;border-bottom: 2px solid gray;}
 
 h1 {border-bottom-width: 5px;border-bottom-style: solid;font-weight: 400;font-size: 3rem;line-height: 1.5;}
-.spacer { height: 50vh; background-color: #000; position: relative; display: flex; justify-content: center; align-items: center; color: white; }
 .navigater { width: 100%; display: flex; justify-content: space-between; background-color: gray; position: fixed; z-index: 1; }
 .navigater a{text-decoration:none;cursor:pointer;}
 a { text-decoration: none; color: white; }
@@ -56,6 +55,12 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .slider-container .slider{width: 100%;height:500px;display: flex;transition: transform 0.5s ease-in-out;}
 .image_box .slider-button{text-align: center;margin: 30px;}
 .slider-button i:hover {cursor: pointer;}
+
+/*etc footer*/
+.etc-icons img{width:3rem;height:3rem;}
+.spacer { height: 30vh; background-color: #000; position: relative; display: black;text-align: center; color: white;padding-top: 5rem; }
+.spacer .etc-icons{margin-bottom: 1rem;}
+.spacer .etc-icons div{display: inline-block;margin: 0 0.5rem}
 
 @media screen and (max-width:768px) { html{ scroll-behavior: smooth; }
 .project{display:block;width:90%;box-shadow: 0.5rem 0.5rem 0.5rem black;}

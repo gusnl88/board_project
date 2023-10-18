@@ -80,12 +80,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 이미지 슬라이드 함수
 
- document.addEventListener("DOMContentLoaded", function () {
-     const slider = document.querySelector(".slider");
-     const prevButton = document.getElementById("prev");
-     const nextButton = document.getElementById("next");
-     const currentPageElement = document.getElementById("currentPage");
-     const totalPagesElement = document.getElementById("totalPages");
+
+document.addEventListener("DOMContentLoaded", function () {
+    const project1 = document.querySelector("#project1");
+    const project2 = document.querySelector("#project2");
+
+    // 첫 번째 프로젝트 슬라이더 초기화
+    setupSlider(project1);
+
+    // 두 번째 프로젝트 슬라이더 초기화
+    setupSlider(project2);
+});
+
+ function setupSlider(sliderContainer) { //슬라이더 함수를 생성하여 요소를 매개변수로 받아 실행
+     const slider = sliderContainer.querySelector(".slider");
+     const prevButton = sliderContainer.querySelector(".prev");
+     const nextButton = sliderContainer.querySelector(".next");
+     const currentPageElement = sliderContainer.querySelector(".currentPage");
+     const totalPagesElement = sliderContainer.querySelector(".totalPages");
+
      let imageWidth; // 이미지의 너비
      let position = 0;
      let currentPage = 1; // 현재 페이지
@@ -113,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
      // 다음 이미지로 이동
      function nextSlide() {
-         if (position > -(imageWidth * (totalPages - 2))) {
+         if (position > -(imageWidth * (totalPages - 1))) {
              position -= imageWidth;
              slider.style.transform = `translateX(${position}px)`;
              currentPage += 1;
@@ -136,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
              updatePageInfo();
          } else {
              // 첫 번째 요소에서 이전 버튼 클릭 시 마지막 요소로 이동
-             position = -(imageWidth * (totalPages - 2));
+             position = -(imageWidth * (totalPages - 1));
              slider.style.transform = `translateX(${position}px)`;
              currentPage = totalPages;
              updatePageInfo();
@@ -158,6 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
      // 초기 페이지 정보 업데이트
      updatePageInfo();
- });
+ }
 
 
