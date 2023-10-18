@@ -75,11 +75,11 @@
                 <!--            <i class="bi bi-arrow-left"></i> &lt;!&ndash; 이전 버튼에 화살표 아이콘 추가 &ndash;&gt;-->
                 <!--          </a>-->
                 <!--        </li>-->
-                <li class="page-item" th:each="p:${page.navigatepageNums}" style="z-index:0;">
+                <li class="page-item" th:each="p:${page.navigatepageNums}" style="z-index:0;" th:classappend="${p==page.pageNum ? 'active' : ''}">
                     <a class="page-link"
                        th:href="@{''(pageNum=${p}, pageSize=${5})}"
                        th:text="${p}"
-                       th:classappend="${p==page.pageNum ? 'active' : ''}">
+                       >
                     </a>
                 </li>
                 <!--        <li class="page-item">-->
