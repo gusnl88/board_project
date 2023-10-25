@@ -84,12 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
     const project1 = document.querySelector("#project1");
     const project2 = document.querySelector("#project2");
+    const project3 = document.querySelector("#project3");
 
     // 첫 번째 프로젝트 슬라이더 초기화
     setupSlider(project1);
 
     // 두 번째 프로젝트 슬라이더 초기화
     setupSlider(project2);
+    // 세 번째 프로젝트 슬라이더 초기화
+    setupSlider(project3);
 });
 
  function setupSlider(sliderContainer) { //슬라이더 함수를 생성하여 요소를 매개변수로 받아 실행
@@ -196,3 +199,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+//**************************************************** 모달창 효과
+    function openModal(imageSrc) {
+        var modal = document.getElementById("myModal");
+        var modalImage = document.getElementById("modalImage");
+
+        modal.style.opacity = "0"; // 초기 투명도를 0으로 설정
+        modal.style.display = "block";
+        modalImage.src = imageSrc;
+
+        // 모달 팝업의 투명도를 스무스하게 1로 증가
+        setTimeout(function() {
+            modal.style.opacity = "1";
+        }, 10);
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.opacity = "0"; // 모달 팝업의 투명도를 스무스하게 0으로 감소
+
+        // 모달 팝업이 완전히 사라지도록 display를 변경
+        setTimeout(function() {
+            modal.style.display = "none";
+        }, 400); // 시간은 transition의 시간과 일치시킵니다.
+    }
