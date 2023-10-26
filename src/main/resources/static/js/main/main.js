@@ -200,9 +200,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //**************************************************** 모달창 효과
-    function openModal(imageSrc) {
+    function openModal(src) {
         var modal = document.getElementById("myModal");
         var modalImage = document.getElementById("modalImage");
+        var imageSrc =src.getAttribute("src")
 
         modal.style.opacity = "0"; // 초기 투명도를 0으로 설정
         modal.style.display = "block";
