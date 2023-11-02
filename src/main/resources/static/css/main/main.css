@@ -9,7 +9,7 @@ body { font-family: "Signika Negative", sans-serif; letter-spacing: 0.04em; }
 .bg2 h1{ color:white; }
 .skills { background-color: #ccc; }
 .skills h1{top:0;position:absolute}
-.skills div {background-color:white;display: flex;flex-direction: column;align-items: center;justify-content: center;padding: 20px;border-radius: 1rem;margin: 2rem;height: 650px;text-align: center;box-shadow: 1rem 1rem 1rem 0 black;font-size:20px;position: relative;transition: transform 1s;}
+.skills div {background-color:white;display: flex;flex-direction: column;padding: 20px;border-radius: 0.5rem;margin: 2rem;height: 650px;text-align: center;box-shadow: 1rem 1rem 1rem 0 black;transition: transform 1s;}
 .skills div:hover {transform: translateY(-10px);}
 .skills img {max-height: 80%;}
 .skills span {font-weight:bold;margin-bottom: 40px;font-size:25px;border-bottom: 2px solid gray;}
@@ -33,12 +33,12 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 /* 여기까지 main */
 /* 여기까지 footer */
 /*project 컨텐츠*/
-.project {width:1200px; height:100%;background-color:white;margin:30px;border-radius: 1rem;padding: 3rem;box-shadow: 1rem 1rem 1rem 0 black;display: flex;;flex-direction: column;align-items: center;}
+.project {width:1200px; height:100%;background-color:white;margin:30px;border-radius: 0.5rem;padding: 3rem;box-shadow: 1rem 1rem 1rem 0 black;display: flex;;flex-direction: column;align-items: center;}
 .project .title{padding-bottom: 0.5rem;font-weight: 400;font-size: 2.5rem;color: #222;text-align: center;}
 .project .sub_title{margin-bottom: 2rem;font-weight: 400;font-size: 1rem;color: #6c757d;text-align: center;opacity: .8;}
 .project .content {display: flex;justify-content: space-between;}
 .project .content .image_box{margin-right: 3rem;}
-.project .content .image_box img{display: block;width: 100%;height: auto;}
+.project .content .image_box img{display: block;width: 100%;height: 100%;}
 
 .project .content .content_box .show{padding-bottom: 1rem;margin-bottom: 1rem;border-bottom: 1px solid #ccc;font-weight: 400;font-size: 1rem;}
 .project .content .content_box .description{margin-bottom: -1.5rem;}
@@ -55,6 +55,9 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .slider-container .slider{width: 100%;height:500px;display: flex;transition: transform 0.5s ease-in-out;}
 .image_box .slider-button{text-align: center;margin: 30px;}
 .slider-button i:hover {cursor: pointer;}
+.swiper-wrapper{z-index:0;}
+.swiper-pagination{z-index:0;}
+
 
 /*etc footer*/
 .etc-icons img{width:3rem;height:3rem;}
@@ -78,7 +81,7 @@ width: 40px;border-radius: 50%;cursor: pointer;font-size: 24px;line-height: 40px
 .project .title {font-size:2rem;font-weight:bold;}
 .project .content .image_box {margin-right:0;}
 .project .content {display:block;}
-.project .content .image_box img{display: block;width: 100%;height: auto;}
+.project .content .image_box img{display: block;width: 100%;height: 100%;}
 .project .content .content_box div:first-child {margin-top:1rem;}
 .project .content .content_box .description .sub_title{display: block;text-align:start;}
 
@@ -86,8 +89,7 @@ width: 40px;border-radius: 50%;cursor: pointer;font-size: 24px;line-height: 40px
 /*이미지 슬라이드*/
 .slider-container{    width: 100%;}
 .skills{display:block;height:auto;padding:10px;}
-.skills .front{margin-top:-120px;}
-.skills div{align-items:normal;box-shadow: 0.5rem 0.5rem 0.5rem 0 black;margin: 2rem auto;width:300px}
+.skills div{box-shadow: 0.5rem 0.5rem 0.5rem 0 black;margin: 2rem auto;width:300px}
 .skills h1{position:relative;margin:auto;padding:5px;text-align:center;border-bottom-width: 5px;border-bottom-style: solid;width: 50%;}
 .logo { position: relative; margin-left: 10px; margin-top: 10px; }
 .logo span{ font-size: 20px; }
