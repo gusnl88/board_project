@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- comments.html -->
+<div th:fragment="commentsFragment">
+        <div class="note">
+            <nav aria-label="Page navigation example" class="no-style">
+                <ul class="pagination">
+                    <!--        <li class="page-item">-->
+                    <!--          <a class="page-link"-->
+                    <!--             th:href="@{''(pageNum=${page.prePage})}"-->
+                    <!--             th:classappend="${page.isHasPreviousPage ? '' : 'disabled'}">-->
+                    <!--            <i class="bi bi-arrow-left"></i> &lt;!&ndash; 이전 버튼에 화살표 아이콘 추가 &ndash;&gt;-->
+                    <!--          </a>-->
+                    <!--        </li>-->
+                    <li class="page-item" style="z-index:0;" th:classappend="${p==page.pageNum ? 'active' : ''}"
+                        th:each="p:${page.navigatepageNums}">
+                        <a class="page-link"
+                           th:href="@{''(pageNum=${p}, pageSize=${5})}"
+                           th:text="${p}"
+                        >
+                        </a>
+                    </li>
+                    <!--        <li class="page-item">-->
+                    <!--          <a class="page-link"-->
+                    <!--             th:href="@{''(pageNum=${page.nextPage})}"-->
+                    <!--             th:classappend="${page.isHasNextPage ? '' : 'disabled'}">-->
+                    <!--            <i class="bi bi-arrow-right"></i> &lt;!&ndash; 다음 버튼에 화살표 아이콘 추가 &ndash;&gt;-->
+                    <!--          </a>-->
+                    <!--        </li>-->
+                </ul>
+            </nav>
+            <div class="input-group mb-3">
+                <div class="col-md-3">
+                    <input class="form-control" id="nameInput" name="name" placeholder="이름 입력(한글10자 이내)" type="text">
+                </div>
+                <div class="col-md-8">
+                    <input class="form-control" id="contentInput" name="content" placeholder="글은 20자 이내로만 작성." type="text">
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary" id="commentButton" style="z-index:0;">댓글 등록</button>
+                </div>
+            </div>
+
+            <ul class="list-group" id="commentList">
+                <th:block th:each="s:${reply}">
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="font-weight-bold" style="font-weight: bold;" th:text="${s.name}"></span>
+                            <span class="" style="margin-top:10px;"
+                                  th:text="${#dates.format(s.created_at, 'yyyy-MM-dd HH:mm')}"></span>
+                            <a class="btn" th:onclick="'confirmDelete(' + ${s.id} + ')'"  th:if="${session.loginUser}">X</a>
+                        </div>
+                        <p th:text="${s.content}"></p>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+</div>
+
+</body>
+</html>
