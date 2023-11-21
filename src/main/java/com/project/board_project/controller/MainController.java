@@ -35,12 +35,23 @@ public class MainController {
         model.addAttribute("loginUser", loginUser);
         // 댓글 작성 횟수를 모델에 추가
         model.addAttribute("commentCount", commentCount);
+
         List<ReplyDto> reply;
         reply=replayService.list(replyPageDto);
         PageInfo<ReplyDto> page=new PageInfo<>(reply);
         model.addAttribute("reply",reply);
         model.addAttribute("page",page);
+
         return "main/main";
+    }
+
+    @GetMapping("/main/comments")
+    public String getComments(Model model, @ModelAttribute ReplyPageDto replyPageDto) {
+        List<ReplyDto> reply = replayService.list(replyPageDto);
+        PageInfo<ReplyDto> page = new PageInfo<>(reply);
+        model.addAttribute("reply", reply);
+        model.addAttribute("page", page);
+        return "main/comments :: commentsFragment";
     }
 
     @Data
