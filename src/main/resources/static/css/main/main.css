@@ -96,8 +96,9 @@ width: 40px;border-radius: 50%;cursor: pointer;font-size: 24px;line-height: 40px
 .menu li { position: relative; margin: 15px; }
 .menu { position: relative; justify-content: center; display: none; }
 .icons li { margin: 0; font-size: 20px; }
-.menu.active {padding:0; margin-top: -15px; margin-bottom: -10px; font-size: 15px; display: flex; }
+.menu.active { margin-top: -10px; margin-bottom: -10px; font-size: 14px; display: flex; }
 .logo.active { display: none; }
-.icons { margin-right: 30px; display: block; }
+.icons { margin-right: 20px; display: block; }
+
 /* 여기까지 navbar */ }
 /* 여기까지 main */

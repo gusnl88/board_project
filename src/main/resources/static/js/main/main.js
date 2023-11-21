@@ -1,3 +1,17 @@
+$(document).on('click', '.pagination a', function (e) {
+    e.preventDefault();
+
+    var url = $(this).attr('href');
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (data) {
+            var commentHtml = $('<div>').html(data).find('.comments').html();
+            $('.comments').html(commentHtml);
+        }
+    });
+});
 // ********************************************************  네브바 메뉴아이콘
 const $toggleBtn = document.querySelector(".toggleBtn");
 const $menu = document.querySelector(".menu");
@@ -77,6 +91,32 @@ document.addEventListener("DOMContentLoaded", () => {
     return response;
   }
 });
+
+//*********************************************************댓글 삭제 컴펌 함수
+ function confirmDelete(id) {
+      if (confirm("삭제하시겠습니까?")) {
+          deleteItem(id);
+      }
+  }
+
+  async function deleteItem(id) {
+      try {
+          const response = await fetch(`/main/${id}/delete`, {
+              method: 'GET'
+          });
+
+          if (response.ok) {
+              location.reload(); // 새로고침
+              alert("삭제되었습니다.");
+              // 삭제 후에 필요한 작업 수행
+          } else {
+              console.error("서버에서 오류 응답을 받았습니다.");
+          }
+      } catch (error) {
+          console.error("삭제 동안 오류가 발생했습니다.", error);
+      }
+  }
+
 
 // ********************************************************  이미지 슬라이드 함수
 
