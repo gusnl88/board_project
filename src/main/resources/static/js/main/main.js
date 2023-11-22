@@ -1,3 +1,5 @@
+
+//**********************************************************댓글페이지 비동기 추가
 $(document).on('click', '.pagination a', function (e) {
     e.preventDefault();
 
