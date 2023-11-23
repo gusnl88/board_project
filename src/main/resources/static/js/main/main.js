@@ -1,4 +1,15 @@
+//**********************************************************네브바 스크롤 이벤트
+window.addEventListener('scroll', function () {
+    var navigater = document.querySelector('.navigater');
+    var scrollPosition = window.scrollY;
 
+    // 스크롤 위치에 따라 배경색 변경
+    if (scrollPosition > 0) {
+        navigater.style.backgroundColor = 'gray'; //스크롤시 백그라운드 컬러 그레이
+    } else {
+        navigater.style.backgroundColor = 'transparent'; //0이면 투명하게
+    }
+});
 //**********************************************************댓글페이지 비동기 추가
 $(document).on('click', '.pagination a', function (e) {
     e.preventDefault();

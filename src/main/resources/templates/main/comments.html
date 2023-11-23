@@ -52,7 +52,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="font-weight-bold" style="font-weight: bold;" th:text="${s.name}"></span>
                             <span class="" style="margin-top:10px;"
-                                  th:text="${#dates.format(s.created_at, 'yyyy-MM-dd HH:mm')}"></span>
+                                  th:text="${#dates.format(s.created_at, 'yy-MM-dd / HH:mm')}"></span>
                             <a class="btn" th:onclick="'confirmDelete(' + ${s.id} + ')'"  th:if="${session.loginUser}">X</a>
                         </div>
                         <p th:text="${s.content}"></p>
