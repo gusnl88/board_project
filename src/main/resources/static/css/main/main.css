@@ -29,10 +29,11 @@ li { list-style: none; margin: 20px 50px; padding-top: 10px; }
 .logo{margin-top: 15px;margin-left: 30px; cursor: pointer; }
 .logo span { position: relative; display: inline-block; font-size: 40px; color: #fff; text-transform: uppercase; animation: flip 2s infinite; animation-delay: calc(.2s * var(--i)) }
 
-.note {margin-top:40px;width:90%;height:85%;background:white;}
+.note {width:90%;background:white;}
 .no-style{}
 @keyframes flip { 0%, 80% { transform: rotateY(360deg) } }
 .icons { display: none; }
+.signupButton{text-align:end;}
 /* 여기까지 navbar */
 /* 여기까지 main */
 /* 여기까지 footer */
@@ -102,10 +103,10 @@ width: 40px;border-radius: 50%;cursor: pointer;font-size: 24px;line-height: 40px
 .skills h1{position:relative;margin:auto;padding:5px;text-align:center;border-bottom-width: 5px;border-bottom-style: solid;width: 50%;}
 .logo { position: relative; margin-left: 10px; margin-top: 13px; }
 .logo span{ font-size: 20px; }
-.menu li { position: relative; margin: 15px; }
+.menu li { position: relative; margin: 6px; }
 .menu { position: relative; justify-content: center; display: none; }
 .icons li { margin: 0; font-size: 20px; }
-.menu.active { margin-top: -10px; margin-bottom: -10px; font-size: 14px; display: flex; }
+.menu.active { margin-bottom: -10px; font-size: 14px; display: flex; }
 .logo.active { display: none; }
 .icons { margin-right: 20px; display: block; }
 

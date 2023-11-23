@@ -55,7 +55,7 @@
         <li><a href="#project">PROJECT</a></li>
         <li><a href="#etc">ETC</a></li>
         <li th:if="${session.loginUser}">
-            <span style="color:white" th:text="${session.loginUser.uId}"></span>
+            <span style="color:white" th:text="${session.loginUser.name+'님'}"></span>
             <a href="/user/logout">out</a>
             <!-- 필요한 다른 사용자 정보를 표시할 수 있습니다. -->
         </li>

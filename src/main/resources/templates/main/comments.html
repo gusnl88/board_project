@@ -34,9 +34,9 @@
                     <!--        </li>-->
                 </ul>
             </nav>
-            <div class="input-group mb-3">
+            <div th:if="${session.loginUser}" class="input-group mb-3">
                 <div class="col-md-3">
-                    <input class="form-control" id="nameInput" name="name" placeholder="이름 입력(한글10자 이내)" type="text">
+                    <input class="form-control" id="nameInput" name="name" th:value="${session.loginUser.name}" type="text">
                 </div>
                 <div class="col-md-8">
                     <input class="form-control" id="contentInput" name="content" placeholder="글은 20자 이내로만 작성." type="text">
@@ -53,12 +53,20 @@
                             <span class="font-weight-bold" style="font-weight: bold;" th:text="${s.name}"></span>
                             <span class="" style="margin-top:10px;"
                                   th:text="${#dates.format(s.created_at, 'yy-MM-dd / HH:mm')}"></span>
-                            <a class="btn" th:onclick="'confirmDelete(' + ${s.id} + ')'"  th:if="${session.loginUser}">X</a>
+
                         </div>
-                        <p th:text="${s.content}"></p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p th:text="${s.content}"></p>
+                            <a style="color:red" class="btn" th:onclick="'confirmDelete(' + ${s.id} + ')'"
+                               th:if="${session.loginUser != null and (session.loginUser.role == 'admin' or session.loginUser.name == s.name)}">X</a>
+                        </div>
                     </li>
                 </th:block>
             </ul>
+            <div th:if="${session.loginUser == null}" class="signupButton">
+                <a class="btn btn-info" href="/user/login">로그인</a>
+
+            </div>
         </div>
 </div>
 

@@ -18,4 +18,7 @@
     <select id="findByUidAndPw" resultMap="UserMapper">
         SELECT * FROM users WHERE u_id=#{uId} AND pw=#{pw}
     </select>
+    <select id="findAll" resultMap="UserMapper">
+        SELECT * FROM users
+    </select>
 </mapper>
