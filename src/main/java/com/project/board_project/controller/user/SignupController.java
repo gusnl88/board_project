@@ -33,7 +33,7 @@ public class SignupController {
             if (storedUser.getUId().equals(user.getUId()) && storedUser.getPw().equals(user.getPw())) {
                 // 로그인 성공 시 세션에 사용자 정보 저장
                 session.setAttribute("loginUser", storedUser);
-                return "redirect:/main";
+                return "redirect:/main#comments";
             }
         }
 
@@ -81,6 +81,6 @@ public class SignupController {
     @GetMapping("logout")
     public String logout(HttpSession session) {
         session.removeAttribute("loginUser");
-        return "redirect:/main";
+        return "redirect:/main#comments";
     }
 }
