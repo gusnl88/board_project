@@ -17,10 +17,12 @@ import java.util.List;
 public class SignupController {
     @Autowired
     private UserService userService;
+
     @GetMapping("login")
-    public String login(){
+    public String login() {
         return "user/login";
     }
+
     @PostMapping("/login")
     public String loginAction(UserDto user, HttpSession session, RedirectAttributes redirectAttributes) {
         // 사용자 리스트 가져오기 (예: userService.getUserList() 메서드 구현 필요)
@@ -41,17 +43,18 @@ public class SignupController {
     }
 
     @GetMapping("")
-    public String sig(){
+    public String sig() {
         return "user/signup";
     }
+
     @PostMapping("/signup")
-    public String signup(@ModelAttribute UserDto userDto, RedirectAttributes redirectAttributes,@RequestParam("pwCheck") String pwCheck) {
+    public String signup(@ModelAttribute UserDto userDto, RedirectAttributes redirectAttributes, @RequestParam("pwCheck") String pwCheck) {
         if (userDto.getUId() == "" || userDto.getName() == "" || userDto.getPw() == "") {
             // 필수 입력값이 비어있을 경우 에러 메시지를 리다이렉트 속성에 추가
             redirectAttributes.addAttribute("error", "모든 필수 입력값을 제공해야 합니다.");
             return "redirect:/user"; // 에러가 발생한 경우 다시 회원가입 페이지로 리다이렉트
         }
-        if(!pwCheck.equals(userDto.getPw())){
+        if (!pwCheck.equals(userDto.getPw())) {
             redirectAttributes.addAttribute("error", "비밀번호가 같지않습니다");
             return "redirect:/user";
         }
@@ -63,17 +66,20 @@ public class SignupController {
 
     @ResponseBody
     @GetMapping("/{uId}/checkId.do")
-    public int checkId(@PathVariable String uId){
+    public int checkId(@PathVariable String uId) {
         System.out.println(uId);
-        UserDto result=userService.idCheck(uId);
-        if(result !=null){
+        UserDto result = userService.idCheck(uId);
+        if (result != null) {
             return 1;
-        }else {
+        } else {
             return 0;
         }
-    };
+    }
+
+    ;
+
     @GetMapping("logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.removeAttribute("loginUser");
         return "redirect:/main";
     }

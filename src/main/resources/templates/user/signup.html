@@ -3,14 +3,21 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        @import url("https://fonts.googleapis.com/css?family=Signika+Negative:300,400&display=swap");
+
         input {
             display: block;
         }
-
+        .homeBtn{
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 20px;
+        }
         h2 {
             text-align: center;
         }
@@ -31,14 +38,16 @@
         body {
             font-family: 'ONE-Mobile-POP', sans-serif;
         }
+        input{
+            font-family:  sans-serif;
+        }
 
     </style>
 </head>
 <body>
-<a style="text-decoration: none;font-size: 30px;
-    font-weight: bold;" href="/main">Home</a>
+<a class="homeBtn" href="/main">Home</a>
 <h2>회원가입</h2>
-<div th:if="${param.error}" class="alert alert-danger">
+<div class="alert alert-danger" th:if="${param.error}">
     <p th:text="${param.error}"></p>
 </div>
 <div class="container">
@@ -50,7 +59,8 @@
                     <span id="uIdCheck"></span>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" id="pwInput" name="pw" placeholder="비밀번호(8자리이상 특수문자1개이상)" type="password">
+                    <input class="form-control" id="pwInput" name="pw" placeholder="비밀번호(8자리이상 특수문자1개이상)"
+                           type="password">
                     <span id="pwSize"></span>
                 </div>
                 <div class="form-group">
@@ -62,6 +72,8 @@
                 </div>
                 <div>
                     <button class="btn btn-primary" type="submit">가입</button>
+                    <a class="btn btn-danger" href="/user/login">취소</a>
+
                 </div>
             </form>
         </div>

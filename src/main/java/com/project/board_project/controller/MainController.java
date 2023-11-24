@@ -37,10 +37,10 @@ public class MainController {
         model.addAttribute("commentCount", commentCount);
 
         List<ReplyDto> reply;
-        reply=replayService.list(replyPageDto);
-        PageInfo<ReplyDto> page=new PageInfo<>(reply);
-        model.addAttribute("reply",reply);
-        model.addAttribute("page",page);
+        reply = replayService.list(replyPageDto);
+        PageInfo<ReplyDto> page = new PageInfo<>(reply);
+        model.addAttribute("reply", reply);
+        model.addAttribute("page", page);
 
         return "main/main";
     }
@@ -61,11 +61,13 @@ public class MainController {
 
         // 게터와 세터 메서드 생략 (Lombok 등을 사용하면 코드를 간소화할 수 있음)
     }
+
     @GetMapping("/{id}/delete")
-    public String deleteAction(@PathVariable int id){
-        int result=replayService.remove(id);
+    public String deleteAction(@PathVariable int id) {
+        int result = replayService.remove(id);
         return "redirect:/main";
     }
+
     @PostMapping("/reply")
     @ResponseBody
     public String replyRegister(@RequestBody CommentRequest commentRequest, HttpSession session) {

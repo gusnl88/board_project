@@ -9,36 +9,41 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
-        .form-group {
-            margin-bottom: 10px;
-        }
+    .homeBtn{
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: bold;
+        margin: 20px;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
 
-        label {
-            display: block;
-        }
+    label {
+        display: block;
+    }
 
-        input {
-            width: 300px;
-            padding: 5px;
-            margin: 5px 0;
-        }
-            button{width:100px;}
-             h2{    text-align: center;
-        }
-        @font-face {
-            font-family: 'ONE-Mobile-POP';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-         }
-        body {
-            font-family: 'ONE-Mobile-POP', sans-serif;
-        }
+    input {
+        width: 300px;
+        padding: 5px;
+        margin: 5px 0;
+    }
+        button{width:100px;}
+         h2{    text-align: center;
+    }
+    @font-face {
+        font-family: 'ONE-Mobile-POP';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+     }
+    body {
+        font-family: 'ONE-Mobile-POP', sans-serif;
+    }
 </style>
 
 <body>
-<a href="/main" style="text-decoration: none;font-size: 30px;
-    font-weight: bold;">Home</a>
+<a class="" href="/main">Home</a>
 <h2>로그인</h2>
 <script th:if="${param.success}">
     alert("[[${param.success}]]");
@@ -57,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pw">비밀번호</label>
-                    <input class="form-control" id="pw" name="pw" type="password">
+                    <input class="form-control" id="pw" name="pw" style="font-family:sans-serif;" type="password">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">로그인</button>
