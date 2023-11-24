@@ -49,7 +49,7 @@ public class SignupController {
 
     @PostMapping("/signup")
     public String signup(@ModelAttribute UserDto userDto, RedirectAttributes redirectAttributes, @RequestParam("pwCheck") String pwCheck) {
-        if (userDto.getUId() == "" || userDto.getName() == "" || userDto.getPw() == "") {
+        if (userDto.getUId() == "" || userDto.getName() == "" || userDto.getPw() == ""||userDto.getName().length()>4||!userDto.getName().matches("^[가-힣]+$")) {
             // 필수 입력값이 비어있을 경우 에러 메시지를 리다이렉트 속성에 추가
             redirectAttributes.addAttribute("error", "모든 필수 입력값을 제공해야 합니다.");
             return "redirect:/user"; // 에러가 발생한 경우 다시 회원가입 페이지로 리다이렉트
