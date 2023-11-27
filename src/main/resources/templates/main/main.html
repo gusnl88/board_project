@@ -390,6 +390,12 @@
     <img class="modal-content" id="modalImage" src="">
 </div>
 
+<input id="loginMessage" th:value="${loginMessage}" type="hidden"/>
+<script>
+        var loginMessage = document.getElementById('loginMessage').value;
+    if (loginMessage) {
+        alert(loginMessage);
+    }
+</script>
 </body>
-
 </html>

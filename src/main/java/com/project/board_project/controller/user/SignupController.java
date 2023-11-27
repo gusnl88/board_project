@@ -19,8 +19,14 @@ public class SignupController {
     private UserService userService;
 
     @GetMapping("login")
-    public String login() {
-        return "user/login";
+    public String login(HttpSession session) {
+        if (session.getAttribute("loginUser") == null) {
+            return "user/login";
+        } else {
+            session.setAttribute("loginReturn", "이미 로그인");
+            return "redirect:/main";
+
+        }
     }
 
     @PostMapping("/login")
@@ -33,6 +39,7 @@ public class SignupController {
             if (storedUser.getUId().equals(user.getUId()) && storedUser.getPw().equals(user.getPw())) {
                 // 로그인 성공 시 세션에 사용자 정보 저장
                 session.setAttribute("loginUser", storedUser);
+                session.setAttribute("loginOk","OK");
                 return "redirect:/main#comments";
             }
         }
@@ -49,7 +56,7 @@ public class SignupController {
 
     @PostMapping("/signup")
     public String signup(@ModelAttribute UserDto userDto, RedirectAttributes redirectAttributes, @RequestParam("pwCheck") String pwCheck) {
-        if (userDto.getUId() == "" || userDto.getName() == "" || userDto.getPw() == ""||userDto.getName().length()>4||!userDto.getName().matches("^[가-힣]+$")) {
+        if (userDto.getUId() == "" || userDto.getName() == "" || userDto.getPw() == "" || userDto.getName().length() > 4 || !userDto.getName().matches("^[가-힣]+$")) {
             // 필수 입력값이 비어있을 경우 에러 메시지를 리다이렉트 속성에 추가
             redirectAttributes.addAttribute("error", "모든 필수 입력값을 제공해야 합니다.");
             return "redirect:/user"; // 에러가 발생한 경우 다시 회원가입 페이지로 리다이렉트

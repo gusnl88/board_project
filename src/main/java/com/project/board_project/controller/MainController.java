@@ -30,9 +30,18 @@ public class MainController {
             session.setAttribute("commentCount", commentCount);
         }
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
-
         // 가져온 사용자 정보를 모델에 추가
         model.addAttribute("loginUser", loginUser);
+
+        if (session.getAttribute("loginReturn")!=null){
+            model.addAttribute("loginMessage","이미 로그인 되어 있습니다.");
+            session.removeAttribute("loginReturn");
+        }
+        if (session.getAttribute("loginOk")!=null){
+            String loginName=loginUser.getName();
+            model.addAttribute("loginMessage","환영합니다"+loginName+"님 로그인되었습니다.");
+            session.removeAttribute("loginOk");
+        }
         // 댓글 작성 횟수를 모델에 추가
         model.addAttribute("commentCount", commentCount);
 
