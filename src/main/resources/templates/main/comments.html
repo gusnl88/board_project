@@ -45,7 +45,13 @@
                     <button class="btn btn-primary" id="commentButton" style="z-index:0;">댓글 등록</button>
                 </div>
             </div>
-
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              // 페이지가 로드될 때 실행되는 코드
+              var nameInput = document.getElementById("nameInput");
+              nameInput.readOnly = true; // 읽기 전용으로 만듦
+          });
+        </script>
             <ul class="list-group" id="commentList">
                 <th:block th:each="s:${reply}">
                     <li class="list-group-item">

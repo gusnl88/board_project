@@ -39,7 +39,7 @@ public class MainController {
         }
         if (session.getAttribute("loginOk")!=null){
             String loginName=loginUser.getName();
-            model.addAttribute("loginMessage","환영합니다"+loginName+"님 로그인되었습니다.");
+            model.addAttribute("loginMessage","환영합니다 "+loginName+"님\n 로그인되었습니다.");
             session.removeAttribute("loginOk");
         }
         // 댓글 작성 횟수를 모델에 추가

@@ -44,10 +44,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const contentInput = document.getElementById("contentInput");
   const commentList = document.getElementById("commentList");
   // "댓글 등록" 버튼 클릭 이벤트 핸들러
+
+
+
+
   commentButton.addEventListener("click", async () => {
     const name = nameInput.value;
     const content = contentInput.value;
-
+ if (!nameInput.readOnly) {
+                 Swal.fire({
+                   title: '이름 확인',
+                   text: '이름은 읽기 전용이어야 합니다.',
+                   icon: 'warning',
+                   didClose: () => {
+                     location.reload(); // 확인 버튼을 눌렀을 때 새로고침
+                   }
+                 });
+                 return;
+             }
     if (name && content) {
       try {
         // 서버로 데이터를 전송하는 비동기 함수를 호출합니다.
@@ -56,13 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // 한글 문자만 포함되어 있는지 확인하는 정규 표현식
          const isAllowed = /^[가-힣\s!@#$%^&*(),.?":{}|<>0-9]+$/.test(name);
           if (!isAllowed || name.length > 10) {
-              alert("이름은 한글, 특수 문자, 띄어쓰기를 포함하여 10자 이내로 가능합니다.");
+              Swal.fire("이름은 한글, 특수 문자, 띄어쓰기를 포함하여 10자 이내로 가능합니다.");
               nameInput.value = ""; // 입력 내용 지우기
               return;
           }
 
             if (content.length > 20) {
-                alert("내용은 20자 이내로 등록 가능합니다.");
+                Swal.fire("내용은 20자 이내로 등록 가능합니다.");
                 return;
             }
             const response = await sendCommentToServer(name, content);
@@ -71,12 +85,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
                  const responseData = await response.text(); // JSON 대신 text로 응답을 받음
                   if (responseData === "success") {
-                        location.reload(); //등록후 새로고침
-                        alert("글이 성공적으로 등록되었습니다.\n글은 3번만 등록 가능합니다.");
+
+                        Swal.fire({
+                          title: '성공',
+                          text: '글이 성공적으로 등록되었습니다.\n글은 3번만 등록 가능합니다.',
+                          icon: 'success',
+                          didClose: () => {
+                            location.reload(); // 확인 버튼을 눌렀을 때 새로고침
+                          }
+                        });
                   } else if (responseData === "exceeded") {
-                        location.reload(); //등록후 새로고침
-                        alert("글등록 횟수를 초과하였습니다.");
+                        Swal.fire({
+                          title: '실패',
+                          text: '글 등록 횟수가 초과 하였습니다.',
+                          icon: 'warning',
+                          didClose: () => {
+                            location.reload(); // 확인 버튼을 눌렀을 때 새로고침
+                          }
+                        });
                         return;
+
                   }
             } else {
               console.error("서버에서 오류 응답을 받았습니다.");
@@ -86,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("글을 업데이트하는 동안 오류가 발생했습니다.", error);
       }
     } else {
-      alert("이름과 내용을 모두 입력하세요.");
+      Swal.fire("내용을 입력 하세요.");
     }
   });
 
@@ -106,30 +134,42 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //*********************************************************댓글 삭제 컴펌 함수
- function confirmDelete(id) {
-      if (confirm("삭제하시겠습니까?")) {
-          deleteItem(id);
-      }
-  }
+async function confirmDelete(id) {
+  const result = await Swal.fire({
+    title: '삭제하시겠습니까?',
+    text: '삭제한 데이터는 복구할 수 없습니다.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: '삭제',
+    cancelButtonText: '취소'
+  });
 
-  async function deleteItem(id) {
-      try {
-          const response = await fetch(`/main/${id}/delete`, {
-              method: 'GET'
-          });
+  if (result.isConfirmed) {
+    try {
+      const response = await fetch(`/main/${id}/delete`, {
+        method: 'GET'
+      });
 
-          if (response.ok) {
-              location.reload(); // 새로고침
-              alert("삭제되었습니다.");
-              // 삭제 후에 필요한 작업 수행
-          } else {
-              console.error("서버에서 오류 응답을 받았습니다.");
+      if (response.ok) {
+        Swal.fire({
+          title: '삭제되었습니다!',
+          text: '선택한 항목이 삭제되었습니다.',
+          icon: 'success',
+          didClose: () => {
+            location.reload(); // 새로고침
+            // 삭제 후에 필요한 작업 수행
           }
-      } catch (error) {
-          console.error("삭제 동안 오류가 발생했습니다.", error);
+        });
+      } else {
+        console.error('서버에서 오류 응답을 받았습니다.');
       }
+    } catch (error) {
+      console.error('삭제 동안 오류가 발생했습니다.', error);
+    }
   }
-
+}
 
 // ********************************************************  이미지 슬라이드 함수
 
