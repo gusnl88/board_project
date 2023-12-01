@@ -153,15 +153,26 @@ async function confirmDelete(id) {
       });
 
       if (response.ok) {
-        Swal.fire({
-          title: '삭제되었습니다!',
-          text: '선택한 항목이 삭제되었습니다.',
-          icon: 'success',
-          didClose: () => {
-            location.reload(); // 새로고침
-            // 삭제 후에 필요한 작업 수행
-          }
-        });
+        const result = await response.text();
+        if (result === "success") {
+          Swal.fire({
+            title: '삭제되었습니다!',
+            text: '선택한 항목이 삭제되었습니다.',
+            icon: 'success',
+            didClose: () => {
+              location.reload(); // 새로고침
+            }
+          });
+        } else if (result === "fail") {
+          Swal.fire({
+            title: '실패',
+            text: '잘못된 경로로 진입하셨습니다.',
+            icon: 'error',
+            didClose: () => {
+              location.reload(); // 새로고침
+            }
+          });
+        }
       } else {
         console.error('서버에서 오류 응답을 받았습니다.');
       }
@@ -170,6 +181,7 @@ async function confirmDelete(id) {
     }
   }
 }
+
 
 // ********************************************************  이미지 슬라이드 함수
 

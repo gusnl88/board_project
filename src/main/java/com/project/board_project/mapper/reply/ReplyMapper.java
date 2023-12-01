@@ -11,5 +11,6 @@ public interface ReplyMapper {
     int insertOne(String name,String content);
     int deleteOne(int id);
     List<ReplyDto> findAll(ReplyPageDto pageDto);
+    ReplyDto findByid(int id);
 
 }

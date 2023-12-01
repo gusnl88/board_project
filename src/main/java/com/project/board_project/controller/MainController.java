@@ -7,14 +7,18 @@ import com.project.board_project.DTO.user.UserDto;
 import com.project.board_project.service.reply.ReplayService;
 import jakarta.servlet.http.HttpSession;
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@Log4j2
 @RequestMapping("/main")
 public class MainController {
     @Autowired
@@ -72,9 +76,21 @@ public class MainController {
     }
 
     @GetMapping("/{id}/delete")
-    public String deleteAction(@PathVariable int id) {
-        int result = replayService.remove(id);
-        return "redirect:/main";
+    @ResponseBody
+    public String deleteAction(@PathVariable int id, HttpSession session) {
+            ReplyDto comment;
+            UserDto loginUser = (UserDto) session.getAttribute("loginUser");
+            comment = replayService.findByid(id);
+
+        try {
+            if (loginUser.getName().equals(comment.getName())||comment != null) {
+                replayService.remove(id);
+                return "success";
+            }
+        }catch (Exception e){
+            log.error(e.getMessage());
+             }
+            return "fail";
     }
 
     @PostMapping("/reply")

@@ -9,4 +9,5 @@ public interface ReplayService {
     int register(String name,String content);
     int remove(int id);
     List<ReplyDto> list(ReplyPageDto PageDto);
+    ReplyDto findByid(int id);
 }

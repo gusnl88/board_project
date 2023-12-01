@@ -17,4 +17,7 @@
     <select id="findAll" resultType="com.project.board_project.DTO.reply.ReplyDto" parameterType="ReplyPageDto">
         SELECT * FROM comments
     </select>
+    <select id="findByid" resultType="com.project.board_project.DTO.reply.ReplyDto">
+        SELECT * FROM comments where id=#{id}
+    </select>
 </mapper>

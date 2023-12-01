@@ -27,4 +27,9 @@ public class ReplayServiceImpl implements ReplayService{
         PageHelper.startPage(pageDto.getPageNum(),pageDto.getPageSize(),pageDto.getOrder());
         return replyMapper.findAll(pageDto);
     }
+
+    @Override
+    public ReplyDto findByid(int id) {
+        return replyMapper.findByid(id);
+    }
 }
