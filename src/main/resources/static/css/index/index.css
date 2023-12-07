@@ -8,5 +8,3 @@ a{text-decoration:none;}
 @media screen and (max-width:768px){*{background-size:cover;}.center h1{font-size:8vh;}}
 #follower{position:fixed;width:10px;height:10px;background-color:white;border-radius:50%;}
 @media screen and (max-width:768px){#follower{display:none;}}
-.star {position: absolute;background-color: white;border-radius: 50%;opacity: 0;animation: blink 1s infinite;}
-@keyframes blink { 0%, 100% {opacity: 0;}50% {opacity: 1;} }
