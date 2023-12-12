@@ -9,4 +9,3 @@ a{text-decoration:none;}
 #follower{display:none;position:fixed;width:10px;height:10px;background-color:white;border-radius:50%;}
 #follower2{display:none;position:fixed;width:8px;height:8px;background-color:white;border-radius:50%;}
 #follower3{display:none;position:fixed;width:6px;height:6px;background-color:white;border-radius:50%;}
-@media screen and (max-width:768px){#follower{display:none;}}
