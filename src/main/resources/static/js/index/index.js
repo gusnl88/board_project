@@ -1,10 +1,16 @@
-  document.addEventListener("mousemove", function (e) {
-        var follower = document.getElementById("follower");
-        var mouseX = e.pageX;
-        var mouseY = e.pageY;
+document.addEventListener("mousemove", function (e) {
+    var followers = [
+        { id: "follower", offset: 15 },
+        { id: "follower2", offset: 25 },
+        { id: "follower3", offset: 35 }
+    ];
 
-        // 동그라미를 마우스 위치로 이동
-        follower.style.display="block";
-        follower.style.left = mouseX+15 + "px";
-        follower.style.top = mouseY+15+ "px";
+    followers.forEach((follower, index) => {
+        setTimeout(() => {
+            var element = document.getElementById(follower.id);
+            element.style.display = "block";
+            element.style.left = e.pageX + follower.offset + "px";
+            element.style.top = e.pageY + follower.offset + "px";
+        }, 100 + 50 * index);
     });
+});
