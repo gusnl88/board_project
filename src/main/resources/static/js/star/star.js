@@ -3,7 +3,7 @@
             star.className = 'star';
             document.body.appendChild(star);
 
-            const randomSize=(Math.random() * 5) ;
+            const randomSize=(Math.random() * 4) ;
             const randomX = Math.random() * window.innerWidth;
             const randomY = Math.random() * window.innerHeight;
             star.style.width=`${randomSize}px`;
