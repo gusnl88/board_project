@@ -350,3 +350,4 @@ document.addEventListener("DOMContentLoaded", function () {
  initSwiper('#swiper-container-1', '#swiper-pagination-1');
  initSwiper('#swiper-container-2', '#swiper-pagination-2');
  initSwiper('#swiper-container-3', '#swiper-pagination-3');
+ initSwiper('#swiper-container-4', '#swiper-pagination-4');
