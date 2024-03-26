@@ -2,9 +2,12 @@
 ### Example user template
 
 # IntelliJ project files
+/build/
+/.gradle/
+/build
+/.gradle
 .idea
 *.iml
 out
 gen
-/build/
-/.gradle/
+
